@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://example.com/#organization",
+      "name": "Your Organization Name",
+      "url": "https://example.com/",
+      "logo": "https://example.com/og-image.png",
+      "sameAs": [
+        "https://github.com/your-org/your-repo",
+        "https://www.linkedin.com/company/your-org"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com/#website",
+      "url": "https://example.com/",
+      "name": "Your Brand Name",
+      "publisher": {
+        "@id": "https://example.com/#organization"
+      }
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AEORank SEO, AEO & GEO Diagnostic API",
+    "version": "2.1.0",
+    "description": "Official REST API for AEORank (https://aeorank.app) — Live Technical SEO, Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) Diagnostics. Evaluates 56 single-page rules, 6 multi-page sitemap rules (Google Search Central & RFC 9727), AEORank Semantic Engine (`AEO-Sem`) typed probabilistic semantics, and live AI citations across Perplexity & Google AI Mode.",
+    "contact": {
+      "name": "AEORank Engineering",
+      "url": "https://aeorank.app",
+      "email": "support@aeorank.app"
+    },
+    "license": {
+      "name": "MIT Specification & Commercial Execution API",
+      "url": "https://github.com/aizaloapp/aeorank/blob/main/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://aeorank.app",
+      "description": "AEORank Global Cloudflare Edge Gateway"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use `Bearer demo` for `/api/v1/audit/sandbox`, or `Bearer aeo_live_<token>` for paid `/api/v1/audit/technical` and `/api/v1/audit/full`."
+      },
+      "RapidApiSecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-RapidAPI-Proxy-Secret",
+        "description": "Constant-time verified RapidAPI Hub proxy secret."
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/rules": {
+      "get": {
+        "operationId": "getGeo62RulesIndex",
+        "summary": "Get the public GEO-62 rule code index & 9 normalized pillar weights ($0, public)",
+        "parameters": [
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "vi"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Public GEO-62 rules index and normalized weight specification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/badge/{domain}.svg": {
+      "get": {
+        "operationId": "getDomainScoreBadgeSvg",
+        "summary": "Render dynamic SVG verification badge for a domain ($0, opt-in embed)",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "aeorank.app"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dynamic SVG score badge",
+            "content": {
+              "image/svg+xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/audit/sandbox": {
+      "post": {
+        "operationId": "runV1SandboxAudit",
+        "summary": "Tier 1: Zero-latency Cloud Sandbox diagnostic (< 10ms, 0 credits)",
+        "description": "Returns a deterministic schema v2 sample payload (`sandbox: true`) for testing SDKs, RapidAPI, Postman, and AI Agents without consuming credits.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "example": "https://example.com"
+                  },
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "vi"
+                    ],
+                    "default": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sandbox diagnostic payload (`sandbox: true`)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/audit/technical": {
+      "post": {
+        "operationId": "runV1TechnicalAudit",
+        "summary": "Tier 2: Live 56-Rule Homepage + Sitemap + Entity Gap + llms.txt Audit (1 credit)",
+        "description": "Executes 6 live parallel HTTP/TLS probes, Sitemap XML inspection, 56 single-page deterministic checks, Knowledge Graph `sameAs` Entity Gap, and generates a ready-to-deploy `/llms.txt` draft in < 2.5s.",
+        "security": [
+          {
+            "BearerAuth": []
+          },
+          {
+            "RapidApiSecret": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "example": "https://aeorank.app"
+                  },
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "vi"
+                    ],
+                    "default": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Live technical audit result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "402": {
+            "description": "Insufficient API credits"
+          }
+        }
+      }
+    },
+    "/api/v1/audit/full": {
+      "post": {
+        "operationId": "runV1FullGeoAudit",
+        "summary": "Tier 3: Full Technical + AEO-Sem Semantic + Live 2-AI Citation Audit (5 credits)",
+        "description": "Runs Tier 2 plus AEORank Semantic Engine (AEO-Sem) typed probabilistic semantic evaluation and live AI citation probing on Perplexity & Google AI Mode. Automatically refunds credits if the target host is unreachable.",
+        "security": [
+          {
+            "BearerAuth": []
+          },
+          {
+            "RapidApiSecret": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "url"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "example": "https://aeorank.app"
+                  },
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "vi"
+                    ],
+                    "default": "en"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Full SEO, AEO & GEO diagnostic result with live AI visibility",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "402": {
+            "description": "Insufficient API credits"
+          }
+        }
+      }
+    }
+  }
+}
