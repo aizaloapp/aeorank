@@ -1,0 +1,49 @@
+{
+  "name": "aeorank-geo-mcp",
+  "version": "2.2.1",
+  "description": "Official Dual-Mode CLI & Model Context Protocol (MCP) Server for AEORank (https://aeorank.app) \u2014 Live 62-Rule Technical SEO, AEO & GEO Diagnostics, AI Share of Voice, and RFC 9727 Agentic Web Readiness.",
+  "homepage": "https://aeorank.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aizaloapp/aeorank.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aizaloapp/aeorank/issues"
+  },
+  "license": "MIT",
+  "author": "AEORank Engineering <support@aeorank.app> (https://aeorank.app)",
+  "bin": {
+    "aeorank-geo-mcp": "bin/aeorank-mcp.js"
+  },
+  "main": "bin/aeorank-mcp.js",
+  "files": [
+    "bin/",
+    "rules-index.json",
+    "rules-index.vi.json",
+    "openapi.json",
+    "SKILL.md",
+    "README.md",
+    "README.vi.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "test": "node --test test/mcp.test.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cli",
+    "seo",
+    "aeo",
+    "geo",
+    "generative-engine-optimization",
+    "aeorank",
+    "ai-search",
+    "llms-txt",
+    "rfc-9727"
+  ]
+}

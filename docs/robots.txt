@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aizaloapp.github.io/aeorank/sitemap.xml

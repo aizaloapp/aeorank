@@ -1,0 +1,17 @@
+# Smithery.ai MCP Server Configuration
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        description: Optional AEORank Live API Key (defaults to zero-cost public MCP gateway)
+        default: "demo"
+  commandFunction:
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['bin/aeorank-mcp.js'],
+      env: { AEORANK_API_KEY: config.apiKey || 'demo' }
+    })
