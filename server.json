@@ -1,0 +1,34 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "app.aeorank/aeorank-geo-mcp",
+  "title": "AEORank \u2014 SEO, AEO & GEO Audit Engine",
+  "description": "Live 62-rule SEO, AEO & GEO audit, RFC 9727 api-catalog, llms.txt & AI citation tools.",
+  "websiteUrl": "https://aeorank.app",
+  "version": "2.2.0",
+  "repository": {
+    "url": "https://github.com/aizaloapp/aeorank",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://aeorank.app/favicon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    },
+    {
+      "src": "https://aeorank.app/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.aeorank.app/mcp"
+    }
+  ]
+}

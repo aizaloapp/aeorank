@@ -1,0 +1,9 @@
+# Your Brand Name — Official AI Context Index
+
+> Concise 2-sentence entity summary stating Who operates the organization, What core product/service is provided, and Whom/Where it serves.
+
+## Core Entry Points
+- [Homepage](https://example.com/): Primary product overview and live diagnostic tools.
+- [Documentation & Knowledge Hub](https://example.com/learn): Technical guides and specifications.
+- [Full AI Context Specification](https://example.com/llms-full.txt): Extended markdown corpus (< 65 KB).
+- [RFC 9727 API Catalog](https://example.com/.well-known/api-catalog): Machine-readable API linkset.

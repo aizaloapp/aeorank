@@ -1,0 +1,28 @@
+# AEORank GEO-62 Compliant robots.txt (First-Match-Wins Order)
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*?mode=
+Disallow: /*?preset=
+Allow: /
+
+# Explicitly allow major AI Search & RAG Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml

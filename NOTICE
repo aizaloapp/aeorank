@@ -1,0 +1,9 @@
+AEORank GEO-62 Diagnostic Specification & OpenAPI Reference
+Copyright (c) 2026 AEORank (https://aeorank.app)
+
+Attribution Notice:
+This specification and rule index builds upon the open-source `jev-seo` taxonomy
+created by Agrici Daniel (MIT License), extended by AEORank Engineering with
+RFC 9727 (`/.well-known/api-catalog`), Protected-Field Year Drift (`PFA-01`),
+Uniform Sitemap Lastmod Trap (`CFA-02`), 8-Tier Multi-Engine GEO Architecture,
+and live 4-AI Citation Diagnostics.
