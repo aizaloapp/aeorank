@@ -19,6 +19,9 @@
   "main": "bin/aeorank-mcp.js",
   "files": [
     "bin/",
+    "skills/",
+    "plugin.json",
+    "mcp.json",
     "server.json",
     "rules-index.json",
     "rules-index.vi.json",

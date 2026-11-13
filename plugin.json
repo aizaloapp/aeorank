@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aeorank",
+  "version": "2.2.1",
+  "description": "Live 62-rule Technical SEO, AEO & GEO diagnostics, RFC 9727 api-catalog, llms.txt & AI citation tools through the hosted AEORank Streamable HTTP MCP server.",
+  "author": {
+    "name": "AEORank Engineering",
+    "email": "support@aeorank.app",
+    "url": "https://aeorank.app"
+  },
+  "homepage": "https://aeorank.app",
+  "repository": "https://github.com/aizaloapp/aeorank",
+  "license": "MIT",
+  "keywords": [
+    "seo",
+    "aeo",
+    "geo",
+    "generative-engine-optimization",
+    "llms-txt",
+    "rfc-9727",
+    "mcp",
+    "audit"
+  ]
+}

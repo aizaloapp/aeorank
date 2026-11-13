@@ -130,6 +130,11 @@ curl -X POST "https://aeorank.app/api/v1/audit/sandbox" \
   -d '{"url": "https://aeorank.app", "lang": "en"}'
 ```
 
+### 3.4. Network, Credentials & Privacy Disclosure (Portable Agent Plugin v1)
+- **Hosted MCP & Network Endpoints:** This repository ships a Portable Agent Plugins v1 declaration (`plugin.json`, `mcp.json`, and `skills/aeorank-seo-geo-auditor/SKILL.md`). `mcp.json` connects exclusively over HTTPS (`streamable-http`) to `https://mcp.aeorank.app/mcp` (and the optional standalone Node.js CLI `bin/aeorank-mcp.js` calls `https://aeorank.app`). When an audit or patch tool is called, only the target public URL and language preference passed in tool arguments are sent to `aeorank.app`.
+- **Credentials & Secret Handling:** All 5 hosted MCP tools (`lookup_rule`, `list_entity_sources`, `search_knowledge_playbooks`, `run_sandbox_audit`, `generate_agent_patch_pack`) operate with **zero authentication and zero stored secrets**. No `.env` files, agent `auth.json` stores, browser profiles, or OS keychains are ever read or modified. Optional paid REST API endpoints (`/api/v1/audit/technical` and `/api/v1/audit/full`) are outside the keyless MCP surface and accept an explicit `Authorization: Bearer <key>` header when invoked directly via CLI or `curl`.
+- **Local Execution, Telemetry & Updates:** The portable plugin contains zero runtime hooks or middleware, spawns zero background processes or shell daemons, collects zero telemetry, and contains zero self-updating code.
+
 ---
 
 ## 4. Public Index of `62` Deterministic Diagnostic Rules (`56` Single-Page + `6` Multi-Page Sitemap)
