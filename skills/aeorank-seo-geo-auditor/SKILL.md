@@ -59,4 +59,6 @@ curl -X POST "https://aeorank.app/api/v1/audit/full" \
 - [Trung Tâm Tri Thức Mở (Tiếng Việt)](https://aeorank.app/tri-thuc)
 - [2026 AI Crawler & GEO-62 Benchmark Statistics (`HTML`)](https://aeorank.app/learn/ai-crawler-readiness-geo-benchmark-2026) · [Markdown `.md`](https://aeorank.app/learn/ai-crawler-readiness-geo-benchmark-2026.md)
 - [How to Check When a Website Was Last Updated (`CFA-02` & `PFA-01` `HTML`)](https://aeorank.app/learn/how-to-check-when-website-was-last-updated) · [Markdown `.md`](https://aeorank.app/learn/how-to-check-when-website-was-last-updated.md)
-- [RAG Architecture & The 8-Tier Multi-Engine GEO Framework](https://aeorank.app/learn/rag-architecture-8-tier-geo-publishing-framework.md)
+- [Best AEO & GEO Audit Tools & Otterly.AI Alternatives (`HTML`)](https://aeorank.app/learn/best-aeo-geo-audit-tools-otterly-alternatives) · [Markdown `.md`](https://aeorank.app/learn/best-aeo-geo-audit-tools-otterly-alternatives.md)
+- [AEO + Remote MCP Connector In-Chat Conversion Strategy (`HTML`)](https://aeorank.app/learn/aeo-and-mcp-connector-strategy-in-chat-conversion-claude-chatgpt) · [Markdown `.md`](https://aeorank.app/learn/aeo-and-mcp-connector-strategy-in-chat-conversion-claude-chatgpt.md)
+- [RAG Architecture & The 8-Tier Multi-Engine GEO Framework (`HTML`)](https://aeorank.app/learn/rag-architecture-8-tier-geo-publishing-framework) · [Markdown `.md`](https://aeorank.app/learn/rag-architecture-8-tier-geo-publishing-framework.md)
