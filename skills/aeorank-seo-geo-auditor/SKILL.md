@@ -20,6 +20,8 @@ Connect any Model Context Protocol (MCP) client directly to `https://mcp.aeorank
 - **`search_knowledge_playbooks`** — Search peer-reviewed Technical SEO, AEO, and GEO engineering guides from the AEORank Open Knowledge Hub (/learn and /tri-thuc).
 - **`run_sandbox_audit`** — Execute an instant zero-latency ($0) AEORank GEO-62 & Agentic Web 2026 diagnostic preview for a domain or URL.
 - **`generate_agent_patch_pack`** — Generate ready-to-deploy machine-readable patch files (/llms.txt, additive RFC 9309 robots.txt, XSS-safe Schema JSON-LD, agent-card.json, safe _headers, and .geo-answer-box Fan-Out HTML) plus a prompt-injection-hardened Coding Agent remediation prompt.
+- **`list_citation_gaps`** — Retrieve cached third-party pages cited by AI search engines, competing brands, uncovered buyer questions, and entity synchronization checklists for a domain with strict dataStatus and B5 access-tier limits.
+- **`activate_deep_audit`** — Return transparent pricing, included deliverables, and a prefilled hosted browser checkout link for a 50-page 4-AI Deep Audit or Drift Guard plan without handling cards or sending emails in chat.
 
 ## 2. Quickstart REST API Endpoints
 

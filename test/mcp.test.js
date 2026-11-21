@@ -18,16 +18,10 @@ const {
   searchRulesOffline,
 } = require("../bin/aeorank-mcp.js");
 
-test("MCP server declares all 5 tools with explicit boolean annotations", () => {
+test("MCP server declares all 7 tools with explicit boolean annotations", () => {
   assert.equal(Array.isArray(TOOLS), true);
-  assert.equal(TOOLS.length, 5);
-  const expectedNames = [
-    "lookup_rule",
-    "list_entity_sources",
-    "search_knowledge_playbooks",
-    "run_sandbox_audit",
-    "generate_agent_patch_pack",
-  ];
+  assert.equal(TOOLS.length, 7);
+  const expectedNames = ["lookup_rule", "list_entity_sources", "search_knowledge_playbooks", "run_sandbox_audit", "generate_agent_patch_pack", "list_citation_gaps", "activate_deep_audit"];
   assert.deepEqual(TOOLS.map((t) => t.name), expectedNames);
   for (const tool of TOOLS) {
     assert.equal(typeof tool.description, "string");
@@ -63,7 +57,7 @@ test("initialize and ping handshake return valid JSON-RPC 2.0 responses", () => 
 test("tools/list, resources/list, resources/read, and prompts/list exercise all declared handlers", () => {
   const listRaw = handleLocalIntrospection({ jsonrpc: "2.0", id: 3, method: "tools/list" });
   const listObj = JSON.parse(listRaw);
-  assert.equal(listObj.result.tools.length, 5);
+  assert.equal(listObj.result.tools.length, 7);
   const resListRaw = handleLocalIntrospection({ jsonrpc: "2.0", id: 4, method: "resources/list" });
   const resListObj = JSON.parse(resListRaw);
   assert.equal(resListObj.result.resources.length, 1);

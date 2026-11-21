@@ -77,12 +77,14 @@ npx -y aeorank-geo rules PFA-01
 ```
 
 ### 3.1. Connect AI Coding Agents via Remote MCP (`$0`, Streamable HTTP JSON-RPC 2.0)
-Point **Cursor**, **Windsurf**, or **Claude Desktop** directly to `https://aeorank.app/mcp` to give your agent instant access to 4 live tools:
+Point **Cursor**, **Windsurf**, or **Claude Desktop** directly to `https://aeorank.app/mcp` to give your agent instant access to 7 live tools:
 - **`lookup_rule`** — Look up any of the 62 AEORank Technical SEO, AEO & GEO diagnostic rules (e.g. AEO-001..AEO-062, llms_txt, answer_first, entity_clarity) and 9-pillar weights.
 - **`list_entity_sources`** — Retrieve verified DR 70-98 self-serve entity & citation platforms (Wikidata, CERN Zenodo DOI, Hugging Face, GitHub, npm, PyPI, LinkedIn) for Knowledge Graph sameAs synchronization.
 - **`search_knowledge_playbooks`** — Search peer-reviewed Technical SEO, AEO, and GEO engineering guides from the AEORank Open Knowledge Hub (/learn and /tri-thuc).
 - **`run_sandbox_audit`** — Execute an instant zero-latency ($0) AEORank GEO-62 & Agentic Web 2026 diagnostic preview for a domain or URL.
 - **`generate_agent_patch_pack`** — Generate ready-to-deploy machine-readable patch files (/llms.txt, additive RFC 9309 robots.txt, XSS-safe Schema JSON-LD, agent-card.json, safe _headers, and .geo-answer-box Fan-Out HTML) plus a prompt-injection-hardened Coding Agent remediation prompt.
+- **`list_citation_gaps`** — Retrieve cached third-party pages cited by AI search engines, competing brands, uncovered buyer questions, and entity synchronization checklists for a domain with strict dataStatus and B5 access-tier limits.
+- **`activate_deep_audit`** — Return transparent pricing, included deliverables, and a prefilled hosted browser checkout link for a 50-page 4-AI Deep Audit or Drift Guard plan without handling cards or sending emails in chat.
 
 ```json
 // Cursor (~/.cursor/mcp.json):
@@ -132,7 +134,7 @@ curl -X POST "https://aeorank.app/api/v1/audit/sandbox" \
 
 ### 3.4. Network, Credentials & Privacy Disclosure (Portable Agent Plugin v1)
 - **Hosted MCP & Network Endpoints:** This repository ships a Portable Agent Plugins v1 declaration (`plugin.json`, `mcp.json`, and `skills/aeorank-seo-geo-auditor/SKILL.md`). `mcp.json` connects exclusively over HTTPS (`streamable-http`) to `https://mcp.aeorank.app/mcp` (and the optional standalone Node.js CLI `bin/aeorank-mcp.js` calls `https://aeorank.app`). When an audit or patch tool is called, only the target public URL and language preference passed in tool arguments are sent to `aeorank.app`.
-- **Credentials & Secret Handling:** All 5 hosted MCP tools (`lookup_rule`, `list_entity_sources`, `search_knowledge_playbooks`, `run_sandbox_audit`, `generate_agent_patch_pack`) operate with **zero authentication and zero stored secrets**. No `.env` files, agent `auth.json` stores, browser profiles, or OS keychains are ever read or modified. Optional paid REST API endpoints (`/api/v1/audit/technical` and `/api/v1/audit/full`) are outside the keyless MCP surface and accept an explicit `Authorization: Bearer <key>` header when invoked directly via CLI or `curl`.
+- **Credentials & Secret Handling:** All 7 hosted MCP tools (`lookup_rule`, `list_entity_sources`, `search_knowledge_playbooks`, `run_sandbox_audit`, `generate_agent_patch_pack`, `list_citation_gaps`, `activate_deep_audit`) operate with **zero authentication and zero stored secrets**. No `.env` files, agent `auth.json` stores, browser profiles, or OS keychains are ever read or modified. Optional paid REST API endpoints (`/api/v1/audit/technical` and `/api/v1/audit/full`) are outside the keyless MCP surface and accept an explicit `Authorization: Bearer <key>` header when invoked directly via CLI or `curl`.
 - **Local Execution, Telemetry & Updates:** The portable plugin contains zero runtime hooks or middleware, spawns zero background processes or shell daemons, collects zero telemetry, and contains zero self-updating code.
 
 ---

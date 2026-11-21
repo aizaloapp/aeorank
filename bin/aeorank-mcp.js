@@ -311,6 +311,275 @@ const TOOLS = [
         "agent_prompt"
       ]
     }
+  },
+  {
+    "name": "list_citation_gaps",
+    "title": "List Cached AI Citation Gaps & Entity Checklist",
+    "description": "Retrieve cached third-party pages cited by AI search engines, competing brands, uncovered buyer questions, and entity synchronization checklists for a domain with strict dataStatus and B5 access-tier limits.",
+    "annotations": {
+      "title": "List Cached AI Citation Gaps & Entity Checklist",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Target website URL or domain (e.g. https://example.com)."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "vi"
+          ],
+          "description": "Output language ('en' or 'vi')."
+        },
+        "scan_token": {
+          "type": "string",
+          "description": "Optional scan token from aeorank.app to verify ownership access tier."
+        },
+        "lead_token": {
+          "type": "string",
+          "description": "Optional email-verified lead token paired with scan_token."
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "dataStatus": {
+          "type": "string"
+        },
+        "access_tier": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "lang_fallback": {
+          "type": "boolean"
+        },
+        "engines_covered": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cache_created_iso": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "data_age_hours": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "stale_over_24h": {
+          "type": "boolean"
+        },
+        "untrusted_external_titles": {
+          "type": "boolean"
+        },
+        "third_party_citation_gaps": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "direct_competitors_cited": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "locked_sources_count": {
+          "type": "integer"
+        },
+        "missing_buyer_questions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "missing_entity_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "entity_checklist": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "share_of_voice": {
+          "type": "object"
+        },
+        "agent_warning": {
+          "type": "string"
+        },
+        "next_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unlock_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ok",
+        "dataStatus",
+        "domain",
+        "third_party_citation_gaps",
+        "direct_competitors_cited",
+        "agent_warning"
+      ]
+    }
+  },
+  {
+    "name": "activate_deep_audit",
+    "title": "Get Deep Audit Quote & Browser Checkout Link",
+    "description": "Return transparent pricing, included deliverables, and a prefilled hosted browser checkout link for a 50-page 4-AI Deep Audit or Drift Guard plan without handling cards or sending emails in chat.",
+    "annotations": {
+      "title": "Get Deep Audit Quote & Browser Checkout Link",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Target website URL or domain (e.g. https://example.com)."
+        },
+        "plan_tier": {
+          "type": "string",
+          "enum": [
+            "pro_audit",
+            "drift_guard_monthly",
+            "drift_guard_annual"
+          ],
+          "description": "Target plan tier: 'pro_audit' (Single Deep Audit), 'drift_guard_monthly', or 'drift_guard_annual'."
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "en",
+            "vi"
+          ],
+          "description": "Output language ('en' or 'vi')."
+        },
+        "payment_method": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "polar",
+            "vietqr"
+          ],
+          "description": "Payment route: 'auto' ('polar' USD for 'en', 'vietqr' VND for 'vi'), 'polar', or 'vietqr'."
+        },
+        "scan_token": {
+          "type": "string",
+          "description": "Optional scan token from aeorank.app to carry homepage scan context to browser checkout."
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "plan_tier": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "payment_method": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "price_display": {
+          "type": "string"
+        },
+        "amount_usd": {
+          "type": "integer"
+        },
+        "amount_vnd": {
+          "type": "integer"
+        },
+        "billing_cycle": {
+          "type": "string"
+        },
+        "deliverables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "upgrade_credit_note": {
+          "type": "string"
+        },
+        "checkout_url": {
+          "type": "string"
+        },
+        "terms_url": {
+          "type": "string"
+        },
+        "mcp_never_charges_card": {
+          "type": "boolean"
+        },
+        "next_action": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ok",
+        "status",
+        "domain",
+        "plan_tier",
+        "payment_method",
+        "currency",
+        "price_display",
+        "checkout_url",
+        "mcp_never_charges_card"
+      ]
+    }
   }
 ];
 
